@@ -1,0 +1,70 @@
+{% extends "menu.html" %}
+{% block titulo %}Talento humano{% endblock %}
+{% block contenido %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/servicio_tecnico/AsignarTabla.css' %}" />
+<link rel="stylesheet" href="{% static 'css/article.css' %}" />
+<article>
+    <div class="texto">
+        <h1>Talento humano</h1>
+        <h2>Novedades</h2>
+    </div>
+    <div class="card" style="opacity: 90%">
+        <div class="card-header">
+            <a class="btn btn-success" href="{% url 'novedades' %}" role="button">Agregar Caso</a>            
+            <a class="btn btn-primary" href="#" role="button">Generar Reporte</a>
+        </div>
+        <div class="card-body">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Tipo de Novedad</th>
+                        <th>Fecha Inicio</th>
+                        <th>Descripción</th>
+                        <th>Tipo Incapacidad</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for novedades in NovedadesTablaTh %}
+                    <tr>
+                        <td>{{ novedades.id }}</td>
+                        <td>{{ novedades.tipo_novedad }}</td>
+                        <td>{{ novedades.fecha_inicio|date:"d/m/Y"}}</td>
+                        <td>{{ novedades.descripcion }}</td>
+                        <td>{{ novedades.tipo_incapacidad }}</td>
+                        <td>
+                            <a class="btn btn-info" href="{% url 'editarNovedadesTh' novedades.id %}" role="button">Editar</a>
+                            <a class="btn btn-danger" href="{% url 'eliminarNovedad' novedades.id %}" role="button">Borrar</a>
+                            <a class="btn btn-info" href="{% url 'VerNovedadesTh' novedades.id %}" role="button">Ver</a>
+                        </td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="8" class="text-center">No hay novedades registradas.</td>
+                    </tr>
+                    {% endfor %}
+                </tbody> 
+            </table>
+        </div>
+        <div class="pagination">
+            <span class="step-links">
+                {% if NovedadesTablaTh.has_previous %}
+                    <a class="pagination-button" href="?page=1">&laquo; Primera Página</a>
+                    <a class="pagination-button" href="?page={{ NovedadesTablaTh.previous_page_number }}">&laquo; Anterior</a>
+                {% endif %}
+                <span class="current">
+                    Página {{ NovedadesTablaTh.number }} de {{ NovedadesTablaTh.paginator.num_pages }}.
+                </span>
+                {% if NovedadesTablaTh.has_next %}
+                    <a class="pagination-button" href="?page={{ NovedadesTablaTh.next_page_number }}">Siguiente &raquo;</a>
+                    <a class="pagination-button" href="?page={{ NovedadesTablaTh.paginator.num_pages }}">Última Página &raquo;&raquo;</a>
+                {% endif %}
+            </span>                
+        </div>
+    </div>
+</article>
+<footer>
+</footer>
+{% endblock %}

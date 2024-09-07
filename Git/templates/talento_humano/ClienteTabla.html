@@ -1,0 +1,68 @@
+{% extends "menu.html" %}
+{% block titulo %}Talento humano{% endblock %}
+{% block contenido %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/servicio_tecnico/AsignarTabla.css' %}" />
+<link rel="stylesheet" href="{% static 'css/article.css' %}" />
+<article>
+    <div class="texto">
+        <h1>Talento humano</h1>
+        <h2>Cliente</h2>
+    </div>
+    <div class="card" style="opacity: 90%">
+        <div class="card-header">
+            <a class="btn btn-success" href="{% url 'cliente' %}" role="button">Agregar Caso</a>            
+            <a class="btn btn-primary" href="#" role="button">Generar Reporte</a>
+        </div>
+        <div class="card-body">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombres</th>
+                        <th>Solicitante</th>
+                        <th>Telefono</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for cliente in ClienteTabla %}
+                    <tr>
+                        <td>{{ cliente.id }}</td>
+                        <td>{{ cliente.nombre }}</td>
+                        <td>{{ cliente.solicitante }}</td>
+                        <td>{{ cliente.telefono }}</td>
+                        <td>
+                            <a class="btn btn-info" href="{% url 'editarCliente' cliente.id %}" role="button">Editar</a>
+                            <a class="btn btn-danger" href="{% url 'eliminarCliente' cliente.id %}" role="button">Borrar</a>
+                            <a class="btn btn-info" href="{% url 'VerCliente' cliente.id %}" role="button">Ver</a>
+                        </td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="8" class="text-center">No hay clientes registrados.</td>
+                    </tr>
+                    {% endfor %}
+                </tbody> 
+            </table>
+        </div>
+        <div class="pagination">
+            <span class="step-links">
+                {% if ClienteTabla.has_previous %}
+                    <a class="pagination-button" href="?page=1">&laquo; Primera Página</a>
+                    <a class="pagination-button" href="?page={{ ClienteTabla.previous_page_number }}">&laquo; Anterior</a>
+                {% endif %}
+                <span class="current">
+                    Página {{ ClienteTabla.number }} de {{ ClienteTabla.paginator.num_pages }}.
+                </span>
+                {% if ClienteTabla.has_next %}
+                    <a class="pagination-button" href="?page={{ ClienteTabla.next_page_number }}">Siguiente &raquo;</a>
+                    <a class="pagination-button" href="?page={{ ClienteTabla.paginator.num_pages }}">Última Página &raquo;&raquo;</a>
+                {% endif %}
+            </span>                
+        </div>
+    </div>
+</article>
+<footer>
+</footer>
+{% endblock %}

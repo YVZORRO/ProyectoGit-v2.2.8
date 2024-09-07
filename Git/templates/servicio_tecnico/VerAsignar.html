@@ -1,0 +1,44 @@
+{% extends "menu.html" %}
+{% block titulo %}Servicio técnico{% endblock %}
+{% block contenido %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/servicio_tecnico/Asignar.css' %}" />
+<link rel="stylesheet" href="{% static 'css/article.css' %}" />
+<article>
+    <div class="texto">
+        <h1>Servicio Técnico</h1>
+        <h2>Asignar</h2>
+    </div>
+    <div style="height: 90%">
+        <div class="card" style="opacity: 90%">
+            <div class="card-header">Detalles del Caso</div>
+            <div class="card-body">
+                <h4 class="card-title">Datos del caso</h4>
+                <form method="post" class="formulario">
+                    {% csrf_token %}
+                    <div class="formulario-contenedor">
+                        {% for campo in formularioAsignar %}
+                            <div class="mb-3 form-item">
+                                <label for="{{ campo.id_for_label }}" class="form-label">{{ campo.label }}</label>
+                                <input
+                                    type="text"
+                                    class="form-control"
+                                    id="{{ campo.id_for_label }}"
+                                    name="{{ campo.name }}"
+                                    value="{{ campo.value|default_if_none:'' }}"
+                                    disabled
+                                    readonly
+                                />
+                                <input type="hidden" name="{{ campo.name }}" value="{{ campo.value|default_if_none:'' }}">
+                                <div class="col-12 help-text"> {{ campo.errors }} </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                    <a class="btn btn-warning" href="{% url 'AsignarTabla' %}" role="button">Volver</a>
+                </form>                
+            </div>
+        </div>
+    </div> 
+</article>
+<footer></footer>
+{% endblock %}

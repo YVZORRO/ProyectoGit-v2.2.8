@@ -1,0 +1,75 @@
+{% extends "menu.html" %}
+{% block titulo %}Servicio Técnico{% endblock %}
+{% block contenido %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/servicio_tecnico/AsignarTabla.css' %}" />
+<link rel="stylesheet" href="{% static 'css/article.css' %}" />
+<article>
+    <div class="texto">
+        <h1>Servicio Técnico</h1>
+        <br>
+        <h2>Novedades</h2>
+    </div>
+    <div class="card" style="opacity: 90%">
+        <div class="card-header">
+            <a class="btn btn-success" href="{% url 'Novedades' %}" role="button">Agregar Novedad</a>
+            <a class="btn btn-primary" href="#" role="button">Generar Reporte</a>
+        </div>
+        <div class="card-body">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Observaciones</th>
+                        <th>Descripción</th>
+                        <th>Fecha Observación</th>
+                        <th>Coordinador</th>
+                        <th>Técnico</th>
+                        <th>Servicio</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for novedades in NovedadesTabla %}
+                    <tr>
+                        <td>{{ novedades.id }}</td>
+                        <td>{{ novedades.observaciones }}</td>
+                        <td>{{ novedades.descripcion}}</td>
+                        <td>{{ novedades.fecha_observacion|date:"d/m/Y"}}</td>
+                        <td>{{ novedades.coordinador }}</td>
+                        <td>{{ novedades.tecnico }}</td>
+                        <td>{{ novedades.servicio }}</td>
+                        <td>
+                            <a class="btn btn-info" href="{% url 'editarNovedades' novedades.id %}" role="button">Editar</a>
+                            <a class="btn btn-danger" href="{% url 'eliminarNovedades' novedades.id %}" role="button">Borrar</a>
+                            <a class="btn btn-info" href="{% url 'VerNovedades' novedades.id %}" role="button">Ver</a>
+                        </td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="8" class="text-center">No hay novedades registradas.</td>
+                    </tr>
+                    {% endfor %}
+                </tbody> 
+            </table>
+        </div>
+        <div class="pagination">
+            <span class="step-links">
+                {% if NovedadesTabla.has_previous %}
+                    <a class="pagination-button" href="?page=1">&laquo; Primera Página</a>
+                    <a class="pagination-button" href="?page={{ NovedadesTabla.previous_page_number }}">&laquo; Anterior</a>
+                {% endif %}
+                <span class="current">
+                    Página {{ NovedadesTabla.number }} de {{ NovedadesTabla.paginator.num_pages }}.
+                </span>
+                {% if NovedadesTabla.has_next %}
+                    <a class="pagination-button" href="?page={{ NovedadesTabla.next_page_number }}">Siguiente &raquo;</a>
+                    <a class="pagination-button" href="?page={{ NovedadesTabla.paginator.num_pages }}">Última Página &raquo;&raquo;</a>
+                {% endif %}
+            </span>                
+        </div>
+    </div>
+</article>
+<footer>
+</footer>
+{% endblock %}

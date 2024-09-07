@@ -1,0 +1,197 @@
+@import url(../../root/Styles.css);
+@import "/menu/menu.html";
+@import "/menu/menu.css";
+@import "/menu/menu.js";
+/*header {
+  position: absolute;
+  top: 0px;
+  left: 300px;
+  background-color: var(--color-found-secundary);
+  height: 50px;
+  width: 83.9%;
+}
+nav{
+  background-color: var(--color-found-secundary);
+}
+
+article {
+  position: absolute;
+  top: 50px;
+  left: 300px;
+  background-color: var(--color-found-secundary);
+  height: 90%;
+  width: 82.9%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+footer {
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+  background-color: var(--color-found-secundary);
+  height: 60px;
+  width: 85.9%;
+}
+
+
+/* este es el logo */
+
+body{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.logo {
+  position: absolute;
+  width: 100px;
+  margin-left: 950px;
+  margin-top:  -600px;
+  z-index: 1;
+}
+
+/* este es el fondo del logo */
+.fondo {
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  background-color: rgb(66, 108, 187);
+  border-radius: 50%;
+  margin-top: -700px;
+  margin-left: 830px;
+  opacity: 15%;
+  z-index: 0;
+}
+.titulo1{
+  width: 80%;
+  height: 60px;
+  position: absolute;
+  top: 10px;
+  margin-left: 280px;
+}
+/* esta es la tabla */
+.registrar {
+  position: absolute;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  width: 800px;
+  margin-left: 730px;
+  margin-top: -600px;
+  overflow: scroll;
+  overflow-y: scroll; /* Agregado para el desplazamiento vertical */
+  max-height: 700px;
+  z-index: 2;
+}   
+    .registrar::-webkit-scrollbar {
+      width: 0px; /* Ancho de la barra de desplazamiento */
+      background: transparent; /* Fondo transparente */
+    }
+    
+    /* Ocultar la barra de desplazamiento en Firefox */
+    .registrar {
+      scrollbar-width: none; /* Ocultar barra de desplazamiento */
+    }
+    .registrar h2 {
+        margin-bottom: 20px;
+        text-align: center;
+        color: #333333;
+      }
+      .registrar label {
+        display: block;
+        margin-bottom: 5px;
+        color: #666666;
+      }
+    
+      .form-input {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #cccccc;
+        border-radius: 5px;
+        color: #333333;
+        box-sizing: border-box;
+      }
+      .form-input:focus,
+      select:focus {
+        border-color: #999999;
+        outline: none;
+      }
+      .btn {
+        width: 100%;
+        padding: 12px;
+        background-color: #666666;
+        border: none;
+        border-radius: 5px;
+        color: white;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+        margin-bottom: 10px;
+      }
+      .btn:hover {
+        background-color: #555555;
+      }
+      @media screen and (max-width: 952px) {
+        
+        .titulo1{
+          font-size: 14px;
+          margin-left: 230px;
+
+        }  
+        .registrar{
+          width: 70%;
+          height: auto;
+          margin-left: 150px;
+          margin-top: -670px;
+        }
+        .logo{
+          width: 50px;
+          height: 50px;
+          margin-left:  300px;
+          margin-top: -670px;
+          transform: translateX(-50%);
+        }
+        .fondo{
+          width: 60%;
+          height: 55%;
+          margin-left:  240px;
+          transform: translateX(-10%);
+          margin-top: -760px;
+        }
+
+        
+    }
+    @media screen and (max-width: 720px) {
+         
+     
+      .titulo1{
+        font-size: 10px;
+        margin-left: 130px;
+      }  
+      .registrar{
+        width: 50%;
+        height: 45vh;
+        margin-left: 130px;
+        margin-top: -650px;
+
+      }
+      
+      .logo{
+        width: 10px;
+        height: 10px;
+        margin-left:  75px;
+        transform: translateX(-20%);
+        margin-top: -640px;
+
+      }
+      .fondo{
+        width: 60%;
+        height: 55%;
+        margin-left:  135px;
+        margin-top: -690px;
+      }
+    }
+    
+      

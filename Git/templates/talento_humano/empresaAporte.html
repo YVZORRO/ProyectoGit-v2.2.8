@@ -1,0 +1,50 @@
+{% extends "menu.html" %}
+{% block titulo %}Talento Humano{% endblock %}
+{% block contenido %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/servicio_tecnico/Asignar.css' %}" />
+<link rel="stylesheet" href="{% static 'css/article.css' %}" />
+<article>
+    <div class="texto">
+        <h1>Talento Humano</h1>
+        <h2>Entidad</h2>
+    </div>
+    <div style="height: 90%">
+        <div class="card" style="opacity: 90%">
+            <div class="card-header">Crear Entidad</div>
+            <div class="card-body">
+                <h4 class="card-title">Datos de la Entidad</h4>
+                <form enctype="multipart/form-data" method="post" class="formulario">
+                    {% csrf_token %}
+                    <div class="formulario-contenedor">
+                        {% for campo in formularioEmpresaA %}
+                        <div class="mb-3 form-item">
+                            <label for="{{ campo.id_for_label }}" class="form-label">{{ campo.label }}</label>
+                            <input
+                                type="{{ campo.field.widget.input_type }}"
+                                class="form-control"
+                                name="{{ campo.name }}"
+                                id="{{ campo.id_for_label }}"
+                                aria-describedby="helpId"
+                                placeholder="{{ campo.label }}"
+                                value="{{ campo.value|default:'' }}"
+                            />
+                            <div class="col-12 help-text"> {{ campo.errors }} </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    
+                    <input
+                        class="btn btn-success"
+                        type="submit"
+                        value="Guardar Entidad"
+                    />
+                </form>                
+            </div>
+        </div>
+    </div>
+</article>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<footer></footer>
+{% endblock %}

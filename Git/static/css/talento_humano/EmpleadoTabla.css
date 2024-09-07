@@ -1,0 +1,246 @@
+/*header {
+    position: absolute;
+    top: 0px;
+    left: 300px;
+    background-color: var(--color-found-secundary);
+    height: 50px;
+    width: 83.9%;
+  }
+  nav{
+    background-color: var(--color-found-secundary);
+  }
+  
+  article {
+    position: absolute;
+    top: 50px;
+    left: 300px;
+    background-color: var(--color-found-secundary);
+    height: 90%;
+    width: 82.9%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  footer {
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+    background-color: var(--color-found-secundary);
+    height: 60px;
+    width: 85.9%;
+  }
+/* este es el logo */
+body{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  .logo {
+    position: absolute;
+    width: 100px;
+    margin-left: 890px;
+    margin-top: 300px;
+    z-index: 1;
+}
+
+/* este es el fondo del logo */
+.fondo {
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    background-color: rgb(66, 108, 187);
+    border-radius: 50%;
+    margin-top: 220px;
+    margin-left: 770px;
+    opacity: 15%;
+    z-index: 0;
+}
+.titulo1{
+    position: absolute;
+    margin-left: 280px;
+    top: 10px;
+}    
+
+.Tabla-Empleado {
+    width: 75%; 
+    margin: 20px auto; 
+    border-collapse: collapse;
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-top: -750px;
+    margin-left: 300px;
+    border-bottom: 20px;
+    z-index: 2;
+    
+}
+
+.Tabla-Empleado th, .Tabla-Empleado td {
+    border: 1px solid #dddddd;
+    padding: 12px;
+    text-align: left;
+}
+
+.Tabla-Empleado th {
+    background-color: #f2f2f2;
+    position: sticky;
+    top: 0;
+    z-index: 3;
+}
+
+.Tabla-Empleado tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.Tabla-Empleado tbody tr:hover {
+    background-color: #f0f0f0;
+}
+/* Inicio de las modificaciones para quitar el scroll horizontal */
+.Tabla-Empleado {
+    table-layout: fixed;    /* Establecer un layout fijo para la tabla */
+}
+
+.Tabla-Empleado tbody {
+    display: block;          /* Convertir tbody en un bloque */
+    max-height: 700px;       /* Establecer una altura máxima para el scroll */
+    overflow-y: scroll;      /* Habilitar el desbordamiento vertical con scroll */
+    overflow-x: hidden;   
+    width: 100%;   /* Deshabilitar el desbordamiento horizontal */
+}
+
+.Tabla-Empleado tbody tr {
+    display: table;          /* Mantener el diseño de la tabla para las filas de tbody */
+    width: 100%;
+    table-layout: fixed;     /* Asegurar que las celdas no se desborden horizontalmente */
+}
+
+.Tabla-Empleado thead, .Tabla-Empleado tfoot {
+    display: table;          /* Mantener el diseño de la tabla para thead y tfoot */
+    width: 100%;
+    table-layout: fixed;     /* Asegurar que las celdas no se desborden horizontalmente */
+}
+/* Fin de las modificaciones para quitar el scroll horizontal */
+
+.Tabla-Empleado a {
+    text-decoration: none;
+    color: blue;
+}
+.reporte img{
+    position: absolute;
+    margin-left: 1780px;
+    margin-top: 1px;
+    width: 40px;
+}
+.textoGenerar{
+    position: absolute;
+    margin-left: 1600px;
+    margin-top: 7px;
+}
+.adicionar img{
+    position: absolute;
+    width: 40px;
+    margin-left: 300px;
+    margin-top: -790px;
+}
+.buscar img{
+    position: absolute;
+    width: 40px;
+    margin-left: 1800px;
+    margin-top: -790px;
+}
+.editar-button, .ver-button, .pdf-button {
+    cursor: pointer;
+}
+/* Responsividad para las tablas */
+@media screen and (max-width: 952px) {
+        
+    .titulo1{
+      font-size: 14px;
+     left: -130px;
+
+    }  
+    .Tabla-Empleado{
+      width: 50%;
+      height: auto;
+      margin-left: 175px;
+      margin-top: -850px;
+    }
+    .logo{
+      width: 50px;
+      height: 50px;
+      margin-left:  250px;
+      margin-top: -600px;
+      transform: translateX(-50%);
+    }
+    .fondo{
+      width: 60%;
+      height: 55%;
+      margin-left:  180px;
+      transform: translateX(-10%);
+      margin-top: -680px;
+    }
+    .adicionar{
+        margin-top: -105px;
+        margin-left: -120px;
+    }
+    .buscar{
+        margin-left: -1200px;
+    }
+    .reporte{
+        margin-left: -1200px;
+       }
+       .textoGenerar{
+        font-size: 14px;
+        margin-left:420px;
+       }
+
+    
+}
+@media screen and (max-width: 720px) {
+     
+ 
+  .titulo1{
+    font-size: 10px;
+    left: -130px;
+  }  
+  .Tabla-Empleado{
+    width: 45%;
+    height: 45vh;
+    margin-left: 130px;
+    margin-top: -800px;
+
+  }
+  
+  .logo{
+    width: 60px;
+    height: 50px;
+    margin-left:  130px;
+    transform: translateX(-20%);
+    margin-top: -650px;
+
+  }
+  .fondo{
+    width: 60%;
+    height: 55%;
+    margin-left:  135px;
+    margin-top: -690px;
+  }
+  .reporte{
+    margin-bottom: 5px;
+    margin-left: -1420px;
+  }
+  .textoGenerar{
+    margin-bottom: 5px;
+    margin-left: 240px;
+    font-size: 11px;
+  }
+  .adicionar{  
+    margin-top: -110px;
+    margin-left: -155px;
+  }
+  .buscar{
+    margin-top: -50px;
+    margin-left: -1460px;
+  }
+}

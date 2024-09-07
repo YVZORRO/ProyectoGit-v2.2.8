@@ -1,0 +1,61 @@
+{% extends "menu.html" %}
+{% block titulo %}Talento Humano{% endblock %}
+{% block contenido %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/servicio_tecnico/Asignar.css' %}" />
+<link rel="stylesheet" href="{% static 'css/article.css' %}" />
+<article>
+    <div class="texto">
+        <h1>Talento Humano</h1>
+        <h2>Contrato</h2>
+    </div>
+    <div style="height: 90%">
+        <div class="card" style="opacity: 90%">
+            <div class="card-header">Crear Contrato</div>
+            <div class="card-body">
+                <h4 class="card-title">Datos del Contrato</h4>
+                <form enctype="multipart/form-data" method="post" class="formulario">
+                    {% csrf_token %}
+                    <div class="formulario-contenedor">
+                        {% for campo in formularioContrato %}
+                        <div class="mb-3 form-item">
+                            <label for="{{ campo.id_for_label }}" class="form-label">{{ campo.label }}</label>
+                            <input
+                                type="{% if campo.name in date_fields %}date{% else %}{{ campo.field.widget.input_type }}{% endif %}"
+                                class="form-control {% if campo.name in date_fields %}datepicker{% endif %}"
+                                name="{{ campo.name }}"
+                                id="{{ campo.id_for_label }}"
+                                aria-describedby="helpId"
+                                placeholder="{{ campo.label }}"
+                                value="{{ campo.value|default:'' }}"
+                            />
+                            <div class="col-12 help-text"> {{ campo.errors }} </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    
+                    <input
+                        class="btn btn-success"
+                        type="submit"
+                        value="Guardar Contrato"
+                    />
+                    <a class="btn btn-warning" href="{% url 'ContratoTabla' %}" role="button">Volver</a>
+                </form>                
+            </div>
+        </div>
+    </div>
+</article>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('.datetimepicker').datetimepicker({
+            format: 'Y-m-d H:i:s', 
+            step: 1 
+        });
+    });
+</script>
+
+<footer></footer>
+{% endblock %}

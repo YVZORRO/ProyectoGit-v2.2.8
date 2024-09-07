@@ -1,0 +1,329 @@
+@import url(https://fonts.googleapis.com/css?family=Inter:100,200,300,regular,500,600,700,800,900);
+@import "../root/Styles.css";
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--color-blanco);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Asegura que el body ocupe al menos el alto de la vista */
+}
+article{
+    width: 1550px;
+    height: 1550px;
+}
+
+.nav {
+    margin-left: -10px; 
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.sidebar {
+    margin-left: -10px; 
+    position: fixed; /* Cambiado a fixed para mantener el sidebar visible */
+    width: 256px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    background-color: var(--color-azul);
+    padding: 24px;
+    transition: all 0.3s;
+}
+
+.sidebar .head {
+    display: flex;
+    gap: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--color-blanco);
+}
+
+.usuario-img {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.usuario-img img {
+    width: 100%;
+    object-fit: cover;
+    
+}
+
+.usuario-detalles .titulo,
+.menu .titulo {
+    font-size: 10px;
+    font-weight: 500;
+    color: var(--color-blanco-transparente);
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+.usuario-detalles .nombre {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--color-blanco);
+}
+
+.nav {
+    flex: 1;
+}
+
+.menu ul li {
+    position: relative;
+    list-style: none;
+    margin-bottom: 5px;
+}
+
+.menu ul li a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--color-blanco);
+    text-decoration: none;
+    padding: 12px 8px;
+    border-radius: 8px;
+}
+
+.menu ul li > a:hover,
+.menu ul li.active > a {
+    color: var(  --color-negro);
+    background-color: var( --color-blanco-transparente);
+}
+
+.menu ul li .icon {
+    font-size: 20px;
+}
+
+.menu ul li .text {
+    flex: 1;
+}
+
+.menu ul li .arrow {
+    font-size: 14px;
+    transition: all 0.3s;
+}
+
+.menu ul li.active .arrow {
+    transform: rotate(180deg);
+}
+
+.menu .sub-menu {
+    display: none;
+    margin-left: 20px;
+    padding-left: 20px;
+    padding-top: 5px;
+    border-left: 1px var(--color-azul);
+}
+
+.menu .sub-menu li a {
+    padding: 10px 8px;
+    font-size: 12px;
+}
+
+.menu:not(:last-child) {
+    padding: 10px;
+    margin-bottom: 20px;
+    border-bottom: 2px var(--color-blanco-transparente);
+}
+
+.menu-btn {
+    position: absolute;
+    right: -14px;
+    top: 3.5%;
+    width: 28px;
+    height: 28px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: var(--color-gris);  /* revisar color xd  */
+    border: 2px solid var(--color-blanco-transparente);
+    background-color: var(--color-blanco-transparente);
+    box-shadow: 10px 10px 15px;
+}
+
+.menu-btn:hover i {
+    color: var( --color-negro);
+}
+
+.menu-btn i {
+    transition: all 0.3s;
+}
+
+.sidebar.active {
+    width: 92px;
+}
+
+.sidebar.active .menu-btn i {
+    transform: rotate(180deg);
+}
+
+.sidebar.active .usuario-detalles {
+    display: none;
+}
+
+.sidebar.active .menu .titulo {
+    text-align: center;
+}
+
+.sidebar.active .menu ul li .arrow {
+    display: none;
+}
+
+.sidebar.active .menu > ul > li > a {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sidebar.active .menu > ul > li > a .text {
+    position: absolute;
+    left: 70px;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 10px;
+    border-radius: 4px;
+    color: var(--color-negro);
+    background-color: var(--color-blanco);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s;
+}
+
+.sidebar.active .menu > ul > li > a .text::after {
+    content: "";
+    position: absolute;
+    left: -5px;
+    top: 20px;
+    width: 20px;
+    height: 20px;
+    border-radius: 2px;
+    background-color: var( --color-blanco);
+    transform: rotate(45deg);
+    z-index: -1;
+}
+
+.sidebar.active .menu > ul > li > a:hover .text {
+    left: 50px;
+    opacity: 1;
+    visibility: visible;
+}
+
+.sidebar.active .menu .sub-menu {
+    position: absolute;
+    top: 0;
+    left: 20px;
+    width: 200px;
+    border-radius: 20px;
+    padding: 10px 20px;
+    border: 1px solid var(--color-blanco-transparente);
+    background-color: var(--color-blanco-transparente);
+   /* box-shadow: 0px 10px 8px var(--color-gris-claro);*/
+}
+
+/* Nuevo CSS para el contenido */
+.main-content {
+    margin-left: 256px; /* El ancho del sidebar */
+    padding: 20px;
+    width: calc(100% - 256px);
+    transition: margin-left 0.3s, width 0.3s;
+    display: flex;
+    flex-direction: column;
+    min-height: calc(100vh - 60px); /* Para dejar espacio para el header y el footer */
+}
+
+/* Nuevo CSS cuando el sidebar está activo */
+.sidebar.active + .main-content {
+    margin-left: 92px; /* El ancho del sidebar en modo contraído */
+    width: calc(100% - 92px);
+}
+
+/* Header */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: red;
+    padding: 10px 20px;
+    border-bottom: 1px solid red;
+    box-shadow: 0px 2px 5px red;
+}
+
+.navbar-brand a {
+    font-size: 20px;
+    font-weight: 700;
+    color: greenyellow;
+    text-decoration: none;
+}
+
+.navbar-links a {
+    margin-left: 20px;
+    font-size: 16px;
+    color: blue;
+    text-decoration: none;
+}
+
+.navbar-links a:hover {
+    color: purple;
+}
+@media screen and (max-width: 952px) {
+    body{
+        background-color:var(--color-blanco);
+
+    }   
+    
+}
+@media screen and (max-width: 720px) {
+     
+    body{
+        background-color:var(--color-blanco);
+    }
+    .sidebar{
+     width: 240px;
+     
+    }
+    .usuario-img{
+        width: 40px;
+    }
+}
+
+/* logo */
+.logo {
+    position: absolute;
+    width: 100px;
+    margin-left: 630px;
+    margin-top: 240px;
+    z-index: 0;
+}
+
+/* este es el fondo del logo */
+.fondo {
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    background-color: var(--color-azul);
+    border-radius: 50%;
+    margin-top: 150px;
+    margin-left: 500px;  
+    z-index: -1;
+}
+/* boton de accesibilidad*/
+.accesibilidad-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 9999; /* Aumenta este valor */
+}
+

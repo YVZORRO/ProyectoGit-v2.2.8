@@ -1,0 +1,68 @@
+{% extends "menu.html" %}
+{% block titulo %}Talento Humano{% endblock %}
+{% block contenido %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/servicio_tecnico/AsignarTabla.css' %}" />
+<link rel="stylesheet" href="{% static 'css/article.css' %}" />
+<article>
+    <div class="texto">
+        <h1>Talento Humano</h1>
+        <h2>Empleado</h2>
+    </div>
+    <div class="card" style="opacity: 90%">
+        <div class="card-header">
+            <a class="btn btn-success" href="{% url 'empleado' %}" role="button">Agregar Caso</a>
+            <a class="btn btn-primary" href="#" role="button">Generar Reporte</a> 
+        </div>
+        <div class="card-body">
+            <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th>Documento</th>
+                    <th>Nombre</th>
+                    <th>Correo</th>
+                    <th>Especialidad</th>
+                    <th>Acciones</th>
+                </tr>
+                </thead>
+                <tbody>
+                  {% for empleado in EmpleadoTabla %}
+                  <tr>
+                      <td>{{ empleado.documento }}</td>
+                      <td>{{ empleado.nombre }}</td>
+                      <td>{{ empleado.correo }}</td>
+                      <td>{{ empleado.especialidad }}</td>
+                      <td>
+                          <a class="btn btn-info" href="{% url 'editarEmpleado' empleado.id %}" role="button">Editar</a>
+                          <a class="btn btn-danger" href="{% url 'eliminarEmpleado' empleado.id %}" role="button">Borrar</a>
+                          <a class="btn btn-info" href="{% url 'VerEmpleado' empleado.id %}" role="button">Ver</a>
+                      </td>
+                  </tr>
+                  {% empty %}
+                  <tr>
+                      <td colspan="5" class="text-center">No hay empleados registrados.</td>
+                  </tr>
+                  {% endfor %}
+              </tbody> 
+            </table>
+        </div>
+        <div class="pagination">
+            <span class="step-links">
+                {% if EmpleadoTabla.has_previous %}
+                    <a class="pagination-button" href="?page=1">&laquo; Primera Página</a>
+                    <a class="pagination-button" href="?page={{ EmpleadoTabla.previous_page_number }}">&laquo; Anterior</a>
+                {% endif %}
+                <span class="current">
+                    Página {{ EmpleadoTabla.number }} de {{ EmpleadoTabla.paginator.num_pages }}.
+                </span>
+                {% if EmpleadoTabla.has_next %}
+                    <a class="pagination-button" href="?page={{ EmpleadoTabla.next_page_number }}">Siguiente &raquo;</a>
+                    <a class="pagination-button" href="?page={{ EmpleadoTabla.paginator.num_pages }}">Última Página &raquo;&raquo;</a>
+                {% endif %}
+            </span>                
+        </div>
+    </div>
+</article>
+<footer>
+</footer>
+{% endblock %}

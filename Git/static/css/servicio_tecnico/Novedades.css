@@ -1,0 +1,16 @@
+.texto{
+    text-align: left;
+    font-family:'Times New Roman', Times, serif; 
+}
+
+
+/* Estilo para la card */
+.card {
+    padding: 20px; /* Espaciado interno */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Opcional, para darle un efecto de sombra */
+    border-radius: 8px; /* Opcional, para bordes redondeados */
+    box-sizing: border-box; /* Incluye padding y border en el cálculo de tamaño */
+    max-height: 750px;
+    max-width: 100%; /* Asegura que el card no exceda el ancho del contenedor */
+    overflow-y: scroll;
+}

@@ -1,0 +1,74 @@
+{% extends "menu.html" %}
+{% block titulo %}Servicio Técnico{% endblock %}
+{% block contenido %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/servicio_tecnico/AsignarTabla.css' %}" />
+<link rel="stylesheet" href="{% static 'css/article.css' %}" />
+<article>
+    <div class="texto">
+        <h1>Servicio Técnico</h1>
+        <h2>Asignar</h2>
+    </div>
+    <div class="card" style="opacity: 90%">
+        <div class="card-header">
+            <a class="btn btn-success" href="{% url 'Asignar' %}" role="button">Agregar Caso</a>  
+            <a class="btn btn-primary" href="#" role="button">Generar Reporte</a>
+        </div>
+        <div class="card-body">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>GLPI</th>
+                        <th>Caso cliente</th>
+                        <th>Descripción</th>
+                        <th>Cantidad equipos</th>
+                        <th>Fecha solicitud</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for asignar in AsignarTabla %}
+                    <tr>
+                        <td>{{ asignar.id }}</td>
+                        <td>{{ asignar.glpi }}</td>
+                        <td>{{ asignar.caso_cliente }}</td>
+                        <td>{{ asignar.descripcion}}</td>
+                        <td>{{ asignar.cantidad_equipos}}</td>
+                        <td>{{ asignar.fecha_solicitud|date:"d/m/Y"}}</td>
+                        <td>
+                            <a class="btn btn-info" href="{% url 'editarAsignar' asignar.id %}" role="button">Editar</a>
+                            <a class="btn btn-danger" href="{% url 'eliminarAsignar' asignar.id %}" role="button">Borrar</a>
+                            <a class="btn btn-info" href="{% url 'verAsignar' asignar.id %}" role="button">Ver</a>
+                        </td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="8" class="text-center">No hay casos registrados.</td>
+                    </tr>
+                    {% endfor %}
+                </tbody> 
+            </table>
+        </div>
+        <div class="card-footer text-muted text-end">
+            <div class="pagination">
+                <span class="step-links">
+                    {% if AsignarTabla.has_previous %}
+                        <a class="pagination-button" href="?page=1">&laquo; Primera Página</a>
+                        <a class="pagination-button" href="?page={{ AsignarTabla.previous_page_number }}">&laquo; Anterior</a>
+                    {% endif %}
+                    <span class="current">
+                        Página {{ AsignarTabla.number }} de {{ AsignarTabla.paginator.num_pages }}.
+                    </span>
+                    {% if AsignarTabla.has_next %}
+                        <a class="pagination-button" href="?page={{ AsignarTabla.next_page_number }}">Siguiente &raquo;</a>
+                        <a class="pagination-button" href="?page={{ AsignarTabla.paginator.num_pages }}">Última Página &raquo;&raquo;</a>
+                    {% endif %}
+                </span>                
+            </div>            
+        </div>
+    </div>
+</article>
+<footer>
+</footer>
+{% endblock %}

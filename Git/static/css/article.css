@@ -1,0 +1,53 @@
+@import "../root/Styles.css";
+article {
+    left: 246px;
+    width: 100%; /* Ocupa el ancho completo del contenedor padre */
+    max-width: 100%; /* Asegura que no exceda el ancho del contenedor padre */
+    height: 900px; /* La altura será determinada por el contenido, hasta el máximo permitido */
+    max-height: 95vh; /* No excederá el 80% de la altura de la ventana del navegador */
+    box-sizing: border-box; /* Incluye el padding y el borde en el cálculo de la altura y el ancho */
+    padding: 20px; /* Espaciado interno */
+}
+
+
+.pagination {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.step-links {
+    display: inline-block;
+}
+
+.step-links a, .step-links .current {
+    display: inline-block;
+    margin: 0 5px;
+    padding: 10px 15px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    text-decoration: none;
+    color: #333;
+}
+
+.step-links a:hover {
+    background-color: #007bff;
+    color: #fff;
+}
+
+.step-links .current {
+    font-weight: bold;
+    background-color: #f8f9fa;
+}
+
+.pagination-button {
+    background-color: #ffffff; /* Fondo blanco */
+    color: #007bff; /* Color del texto */
+    border: 1px solid #ddd; /* Borde gris */
+    text-decoration: none;
+}
+
+.pagination-button:hover {
+    background-color: #007bff; /* Fondo azul al pasar el ratón */
+    color: #fff; /* Texto blanco al pasar el ratón */
+}

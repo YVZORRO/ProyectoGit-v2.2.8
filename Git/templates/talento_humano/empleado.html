@@ -1,0 +1,61 @@
+{% extends "menu.html" %}
+{% block titulo %}Talento Humano{% endblock %}
+{% block contenido %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/servicio_tecnico/Asignar.css' %}" />
+<link rel="stylesheet" href="{% static 'css/article.css' %}" />
+<article>
+    <div class="texto">
+        <h1>Talento Humano</h1>
+        <h2>Empleado</h2>
+    </div>
+    <div style="height: 90%">
+        <div class="card" style="opacity: 90%">
+            <div class="card-header">Crear Empleado</div>
+            <div class="card-body">
+                <h4 class="card-title">Datos del Empleado</h4>
+                <form enctype="multipart/form-data" method="post" class="formulario">
+                    {% csrf_token %}
+                    <div class="formulario-contenedor">
+                        {% for campo in formularioEmpleado %}
+                        <div class="mb-3 form-item">
+                            <label for="{{ campo.id_for_label }}" class="form-label">{{ campo.label }}</label>
+                            <input
+                                type="{% if campo.name == 'fecha_nacimiento' %}date{% else %}{{ campo.field.widget.input_type }}{% endif %}"
+                                class="form-control {% if campo.name == 'fecha_nacimiento' %}datepicker{% endif %}"
+                                name="{{ campo.name }}"
+                                id="{{ campo.id_for_label }}"
+                                aria-describedby="helpId"
+                                placeholder="{{ campo.label }}"
+                                value="{{ campo.value|default:'' }}"
+                            />
+                            <div class="col-12 help-text"> {{ campo.errors }} </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    
+                    <input
+                        class="btn btn-success"
+                        type="submit"
+                        value="Guardar Empleado"
+                    />
+                    <a class="btn btn-warning" href="{% url 'EmpleadoTabla' %}" role="button">Volver</a>
+                </form>                
+            </div>
+        </div>
+    </div>
+</article>
+
+<!-- Incluye solo el script para manejar fechas si es necesario -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+  $(document).ready(function() {
+      // Configuración del datepicker si se usa alguna librería
+      $('.datepicker').datepicker({
+          format: 'yyyy-mm-dd', 
+          autoclose: true
+      });
+  });
+</script>
+<footer></footer>
+{% endblock %}

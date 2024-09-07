@@ -1,0 +1,66 @@
+.texto{
+    text-align: left;
+    font-family:'Times New Roman', Times, serif; 
+}
+
+
+/* Estilo para la card */
+.card {
+    /* background-color: blueviolet; */
+    padding: 20px; /* Espaciado interno */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Opcional, para darle un efecto de sombra */
+    border-radius: 8px; /* Opcional, para bordes redondeados */
+    box-sizing: border-box; /* Incluye padding y border en el cálculo de tamaño */
+    max-height: 750px;
+    max-width: 100%; /* Asegura que el card no exceda el ancho del contenedor */
+    overflow-y: scroll;
+}
+
+/* Contenedor del formulario dentro de la card */
+.formulario-card {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between; /* Distribuye el espacio entre los elementos */
+    gap: 10px; /* Espacio entre los elementos */
+}
+
+.card-header {
+    padding: 10px; /* Añadir padding para mejorar la apariencia */
+}
+
+.card-title {
+    padding: 10px;
+    margin-bottom: 10px;
+    width: 100%;
+    border-bottom: 2px solid #7a7a7a; /* Línea en la parte inferior */
+}
+
+
+/* Estilo para el formulario */
+.formulario {
+    max-width: 100%; /* Asegura que el formulario no exceda el ancho del contenedor padre */
+    margin: auto;
+    box-sizing: border-box; /* Incluye padding y border en el cálculo de tamaño */
+}
+
+/* Contenedor para los elementos del formulario */
+.formulario-contenedor {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between; /* Distribuye el espacio entre los elementos */
+    gap: 10px; /* Espacio entre los elementos */
+}
+
+/* Estilo para cada elemento del formulario */
+.form-item {
+    flex: 1 1 calc(50% - 16px); /* Ajusta el 50% según el número de columnas deseado */
+    box-sizing: border-box;
+}
+
+/* Estilo para pantallas pequeñas */
+@media (max-width: 768px) {
+    .form-item {
+        flex: 1 1 100%; /* En pantallas pequeñas, los elementos ocuparán el ancho completo */
+    }
+}
+

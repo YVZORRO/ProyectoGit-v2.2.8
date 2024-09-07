@@ -1,0 +1,18 @@
+:root{
+    /* Colores menu anterior*/
+    --color-found-primary:#1E3B68;
+    --color-found-secundary:#ffffff;  
+    --color-found-gris: #787879;
+    --color-letra-black: #000000;
+    --color-letra-whiteb2: #ffffffb2;
+    --color-letra-cursor: #ffffff;
+    --color-boton-sombreado: #a0ff08;
+    /* colores menu nuevo*/
+    --color-azul:#005187;  
+    --color-blanco:#ffffff;
+    --color-negro:#000000;
+    --color-blanco-transparente: #ffffffb2;
+    --color-gris: #787879;
+    --color-gris-claro:#b5b5b5;
+
+}

@@ -1,0 +1,69 @@
+{% extends "menu.html" %}
+{% block titulo %}Talento Humano{% endblock %}
+{% block contenido %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/servicio_tecnico/AsignarTabla.css' %}" />
+<link rel="stylesheet" href="{% static 'css/article.css' %}" />
+<article>
+    <div class="texto">
+        <h1>Talento Humano</h1>
+        <h2>Contrato</h2>
+    </div>
+    <div class="card" style="opacity: 90%">
+        <div class="card-header">
+            <a class="btn btn-success" href="{% url 'contrato' %}" role="button">Agregar Contrato</a>  
+            <a class="btn btn-primary" href="#" role="button">Generar Reporte</a>
+        </div>
+        <div class="card-body">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Fecha Inicio</th>
+                        <th>Salario</th>
+                        <th>Función</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for Contrato in ContratoTabla %}
+                    <tr>
+                        <td>{{ Contrato.id }}</td>
+                        <td>{{ Contrato.fecha_inicio|date:"d/m/Y"}}</td>
+                        <td>{{ Contrato.salario }}</td>
+                        <td>{{ Contrato.funcion }}</td>      
+                        
+                        <td>
+                            <a class="btn btn-info" href="{% url 'editarContrato' Contrato.id %}" role="button">Editar</a>
+                            <a class="btn btn-danger" href="{% url 'eliminarContrato' Contrato.id %}" role="button">Borrar</a>
+                            <a class="btn btn-info" href="{% url 'VerContrato' Contrato.id %}" role="button">Ver</a>
+                        </td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="8" class="text-center">No hay contratos registrados.</td>
+                    </tr>
+                    {% endfor %}
+                </tbody> 
+            </table>
+        </div>
+        <div class="pagination">
+            <span class="step-links">
+                {% if ContratoTabla.has_previous %}
+                    <a class="pagination-button" href="?page=1">&laquo; Primera Página</a>
+                    <a class="pagination-button" href="?page={{ ContratoTabla.previous_page_number }}">&laquo; Anterior</a>
+                {% endif %}
+                <span class="current">
+                    Página {{ ContratoTabla.number }} de {{ ContratoTabla.paginator.num_pages }}.
+                </span>
+                {% if ContratoTabla.has_next %}
+                    <a class="pagination-button" href="?page={{ ContratoTabla.next_page_number }}">Siguiente &raquo;</a>
+                    <a class="pagination-button" href="?page={{ ContratoTabla.paginator.num_pages }}">Última Página &raquo;&raquo;</a>
+                {% endif %}
+            </span>                
+        </div>
+    </div>
+</article>
+<footer>
+</footer>
+{% endblock %}

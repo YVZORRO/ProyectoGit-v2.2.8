@@ -1,0 +1,143 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- ICONS -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <!-- STYLESHEET -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/menu.css' %}" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:100,200,300,regular,500,600,700,800,900" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.min.css" />
+    <title>{% block titulo %}GIT Colombia{% endblock %}</title>
+</head>
+<body>
+    <!-- Inicio de menu -->
+    <nav>
+        <div class="sidebar">
+            <!-- ===================== Usuario ===================== -->
+            <div class="menu-btn">
+                <i class="ph-bold ph-caret-left"></i>
+            </div>
+            <div class="head">
+                <div class="usuario-img">
+                    <img src="{% static 'imagenes/user.jpg' %}" alt="imagen-perfil" />
+                </div>
+                <div class="usuario-detalles">
+                    <p class="titulo">Tipo de Usuario</p>
+                    <p class="nombre">Usuario</p>
+                </div>
+            </div>
+            <!-- ================================================== -->
+            <div class="nav">
+                <div class="menu">
+                    <p class="titulo">MAIN</p>
+                    <ul>
+                        <!-- ===================== Página de Inicio ===================== -->
+                        <li>
+                            <a href="{% url 'VolverInicio' %}" data-content="home">
+                                <i class="icon ph-bold ph-house-simple"></i>
+                                <span class="text">Inicio</span>
+                            </a>
+                        </li>
+                        <!-- ===================== Talento Humano ===================== -->
+                        <li>
+                            <a href="#" data-content="talento-humano">
+                                <i class="icon ph-bold ph-user"></i>
+                                <span class="text">Talento Humano</span>
+                                <i class="arrow ph-bold ph-caret-down"></i>
+                            </a>
+                            <ul class="sub-menu">
+                                <li><a href="{% url 'EmpleadoTabla' %}"><span class="text">Empleado</span></a></li>
+                                <li><a href="{% url 'ClienteTabla' %}"><span class="text">Cliente</span></a></li>
+                                <li><a href="{% url 'ContratoTabla' %}"><span class="text">Contrato</span></a></li>
+                                <li><a href="{% url 'NovedadesTablaTh' %}"><span class="text">Novedades</span></a></li>
+                                <li><a href="{% url 'EmpresaAporte' %}"><span class="text">Empresa Aporte</span></a></li>
+                            </ul>
+                        </li>
+                        <!-- ===================== Servicio Técnico ===================== -->
+                        <li>
+                            <a href="#" data-content="servicio-tecnico">
+                                <i class="icon ph-bold ph-wrench"></i>
+                                <span class="text">Servicio Técnico</span>
+                                <i class="arrow ph-bold ph-caret-down"></i>
+                            </a>
+                            <ul class="sub-menu">
+                                <li><a href="#"><span class="text">Agenda</span></a></li>
+                                <li><a href="{% url 'AsignarTabla' %}"><span class="text">Asignar</span></a></li>
+                                <li><a href="{% url 'NovedadesTabla' %}"><span class="text">Novedades</span></a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!-- ===================== Menu Ajustes ===================== -->
+            <div class="menu">
+                <p class="titulo">Cuenta</p>
+                <ul>
+                    <li>
+                        <a href="#">
+                            <i class="icon ph-bold ph-gear"></i>
+                            <span class="text">Ajustes</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="icon ph-bold ph-info"></i>
+                            <span class="text">Ayuda</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#"> <!-- ===================== Ajustes de perfil ===================== -->
+                            <i class="icon ph-bold ph-pen"></i>
+                            <span class="text">Editar Perfil</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="icon ph-bold ph-sign-out"></i>
+                            <span class="text">Salir</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="main-content">
+            <div class="logo">
+                <img src="{% static 'logo/Logo sin fondo.png' %}" alt="">
+            </div>
+            <div class="fondo"></div>
+            {% block contenido %}
+            {% endblock %}
+            {% block accesibilidad %}
+<div class="accesibilidad-btn"></div>
+{% endblock %}
+            
+        </div>
+    </nav>
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.js" integrity="sha512-8Z5++K1rB3U+USaLKG6oO8uWWBhdYsM3hmdirnOEWp8h2B1aOikj5zBzlXs8QOrvY9OxEnD2QDkbSKKpfqcIWw==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{% static 'js/menu.js' %}"></script>
+<!-- Botón de accesibilidad -->
+<div class="accesibilidad-btn">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="accessibilityDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+    <i class="fas fa-universal-access"></i> 
+  </button>
+  <ul class="dropdown-menu" aria-labelledby="accessibilityDropdown">
+    <li><button class="dropdown-item" id="increaseFontBtn"><i class="fas fa-plus"></i> Aumentar Tamaño de Letra</button></li>
+    <li><button class="dropdown-item" id="decreaseFontBtn"><i class="fas fa-minus"></i> Disminuir Tamaño de Letra</button></li>
+    <li><button class="dropdown-item" id="zoomInBtn"><i class="fas fa-search-plus"></i> Zoom +</button></li>
+    <li><button class="dropdown-item" id="zoomOutBtn"><i class="fas fa-search-minus"></i> Zoom -</button></li> 
+    <li><button class="dropdown-item" id="readerBtn"><i class="fas fa-play"></i> Activar Lector de Voz</button></li>
+    <li><button class="dropdown-item" id="stopReaderBtn"><i class="fas fa-stop"></i> Detener Lector de Voz</button></li>
+  </ul>
+</div>
+
+</body>
+</html>
